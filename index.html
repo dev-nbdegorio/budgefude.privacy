@@ -1,87 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            margin: 40px;
-            color: #333;
-        }
-        h1, h2 {
-            color: #222;
-        }
-        p {
-            margin-bottom: 16px;
-        }
-        ul {
-            margin-left: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — BudgeFudge</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #2d6a4f;
+      --green-mid:  #40916c;
+      --green-bg:   #f0f5f0;
+      --text:       #1a1a1a;
+      --muted:      #6b7280;
+      --border:     #e5e7eb;
+      --card:       #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   Helvetica, Arial, sans-serif;
+      background: var(--green-bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    header p.subtitle {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Summary card */
+    .summary {
+      background: var(--green);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+    }
+    .summary h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .summary ul { padding-left: 20px; }
+    .summary li { margin-bottom: 8px; font-size: 0.97rem; opacity: 0.92; }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--green);
+      margin: 44px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    p { margin-bottom: 14px; }
+
+    a { color: var(--green-mid); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 24px;
+      font-size: 0.93rem;
+      background: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    th {
+      background: var(--green);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--green-bg); }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .badge-green  { background: #d1fae5; color: #065f46; }
+    .badge-blue   { background: #dbeafe; color: #1e40af; }
+    .badge-yellow { background: #fef3c7; color: #92400e; }
+
+    .callout {
+      border-left: 4px solid var(--green-mid);
+      background: #fff;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 18px 0 24px;
+      font-size: 0.95rem;
+    }
+    .callout strong { color: var(--green); }
+
+    .no-collect {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 14px 0 24px;
+    }
+    .no-collect li::before {
+      content: "✗ ";
+      color: #ef4444;
+      font-weight: 700;
+    }
+    .no-collect li { list-style: none; }
+
+    .rights-region {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .rights-region h3 { margin-top: 0; color: var(--green); }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      main { padding: 28px 16px 60px; }
+      table { font-size: 0.86rem; }
+      th, td { padding: 9px 12px; }
+      .summary { padding: 22px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Privacy Policy</h1>
-<p><strong>Last updated:</strong> [Insert Date]</p>
+<header>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">BudgeFudge &nbsp;·&nbsp; Last updated: June 30, 2026</p>
+</header>
 
-<p>
-Your privacy is important to us. This Privacy Policy explains how we collect, use,
-and protect your information when you use our website or services.
-</p>
+<main>
 
-<h2>1. Information We Collect</h2>
-<p>We may collect the following types of information:</p>
-<ul>
-    <li>Personal information (such as name, email address, or contact details)</li>
-    <li>Usage data (such as pages visited, browser type, and device information)</li>
-</ul>
+  <!-- ─── Summary ─────────────────────────────────────────────────────────── -->
 
-<h2>2. How We Use Your Information</h2>
-<p>We use your information to:</p>
-<ul>
-    <li>Provide and maintain our services</li>
-    <li>Improve user experience</li>
-    <li>Communicate with you when necessary</li>
-</ul>
+  <div class="summary">
+    <h2>The short version</h2>
+    <ul>
+      <li>Your financial data is stored on your device — not on our servers.</li>
+      <li>Cloud backup is optional. If you opt in, only you can access your data.</li>
+      <li>The AI assistant (Fudge) runs entirely on your iPhone. Nothing you say to Fudge ever leaves your device.</li>
+      <li>We do not run ads, sell data, or track you across other apps.</li>
+      <li>There are no analytics, crash trackers, or advertising SDKs in the app.</li>
+    </ul>
+  </div>
 
-<h2>3. Cookies</h2>
-<p>
-We may use cookies to enhance your experience. You can choose to disable cookies
-through your browser settings.
-</p>
+  <!-- ─── 1. Who we are ─────────────────────────────────────────────────────── -->
 
-<h2>4. Data Sharing</h2>
-<p>
-We do not sell or rent your personal information to third parties. We may share
-information only when required by law or to protect our rights.
-</p>
+  <h2>1. Who We Are</h2>
 
-<h2>5. Data Security</h2>
-<p>
-We take reasonable measures to protect your information, but no method of
-transmission over the internet is 100% secure.
-</p>
+  <p>BudgeFudge is a personal budgeting app developed and published by <strong>Nathaniel Degorio</strong> ("we", "us", "our"). The app is available on the Apple App Store.</p>
 
-<h2>6. Your Rights</h2>
-<p>
-You may request access, correction, or deletion of your personal data by contacting us.
-</p>
+  <p><strong>Contact:</strong><br />
+  Nathaniel Degorio<br />
+  <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">Contact form</a></p>
 
-<h2>7. Changes to This Policy</h2>
-<p>
-We may update this Privacy Policy from time to time. Any changes will be posted on
-this page.
-</p>
+  <p>This Privacy Policy explains what information BudgeFudge collects, how it is used, who it is shared with, and the rights you have regarding your data. It applies to all users of the BudgeFudge iOS application.</p>
 
-<h2>8. Contact Us</h2>
-<p>
-If you have any questions about this Privacy Policy, please contact us at:
-<br>
-<strong>Email:</strong> [your-email@example.com]
-</p>
+  <!-- ─── 2. Data we collect ─────────────────────────────────────────────────── -->
+
+  <h2>2. Data We Collect</h2>
+
+  <h3>2.1 Data you enter yourself (stored locally)</h3>
+
+  <p>Everything you log in BudgeFudge — spending entries, income sources, recurring expenses, account balances, important dates, and any notes — is <strong>stored locally on your device</strong> in an encrypted SQLite database managed by the Expo SQLite library. This data never leaves your phone unless you explicitly enable cloud backup by creating an account.</p>
+
+  <h3>2.2 Account data (optional cloud backup)</h3>
+
+  <p>Creating an account is <strong>entirely optional</strong>. BudgeFudge works fully without one. If you sign up, we collect:</p>
+
+  <table>
+    <tr>
+      <th>Data type</th>
+      <th>Purpose</th>
+      <th>Stored where</th>
+    </tr>
+    <tr>
+      <td><strong>Email address</strong></td>
+      <td>Account creation, authentication, and password reset. We do not send marketing emails.</td>
+      <td>Supabase (cloud)</td>
+    </tr>
+    <tr>
+      <td><strong>User ID</strong></td>
+      <td>A unique identifier assigned by Supabase to link your data to your account.</td>
+      <td>Supabase (cloud)</td>
+    </tr>
+    <tr>
+      <td><strong>Budgeting data</strong><br />(accounts, income, spending, recurring expenses, important dates)</td>
+      <td>Cloud backup so you can restore your data if you lose or replace your device.</td>
+      <td>Supabase (cloud)</td>
+    </tr>
+  </table>
+
+  <p>Cloud backup is powered by <strong>Supabase</strong> (<a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>), a managed PostgreSQL database service. Your data is protected with row-level security policies — only you, authenticated with your credentials, can read or write your records. Supabase's privacy policy is at <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</p>
+
+  <h3>2.3 Purchase data (in-app purchases)</h3>
+
+  <p>If you purchase a BudgeFudge Pro subscription or one-time purchase, the transaction is processed by <strong>Apple</strong> through the App Store. We use <strong>RevenueCat</strong> (<a href="https://www.revenuecat.com" target="_blank" rel="noopener">revenuecat.com</a>) to verify purchase receipts and manage entitlements. RevenueCat may receive:</p>
+
+  <ul>
+    <li>An anonymous or pseudonymous app user identifier</li>
+    <li>Your purchase receipt (provided by Apple)</li>
+    <li>Your device platform and app version</li>
+  </ul>
+
+  <p>RevenueCat does not receive your name, email address, or financial card details. Apple's payment privacy policy applies to all billing. RevenueCat's privacy policy is at <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.</p>
+
+  <p>We never see your credit card or payment details. Apple handles all billing.</p>
+
+  <h3>2.4 Data we do NOT collect</h3>
+
+  <div class="no-collect">
+    <ul>
+      <li>Bank account credentials or direct bank connections</li>
+      <li>Advertising identifiers (IDFA or any equivalent)</li>
+      <li>Analytics, usage events, or crash telemetry — there are no analytics SDKs in the app</li>
+      <li>Location data — BudgeFudge never requests location access</li>
+      <li>Contacts — BudgeFudge never requests contact access</li>
+      <li>Photos or camera — BudgeFudge only accesses images you explicitly share into the app via the system share sheet</li>
+      <li>Cross-app or cross-website tracking data</li>
+    </ul>
+  </div>
+
+  <!-- ─── 3. Fudge AI ──────────────────────────────────────────────────────── -->
+
+  <h2>3. Fudge AI Assistant (iOS Only)</h2>
+
+  <div class="callout">
+    <strong>Fudge is entirely on-device.</strong> Your conversations with Fudge, any screenshots or messages you share for import, and all AI-generated suggestions stay on your iPhone. Nothing is transmitted to our servers or any third party.
+  </div>
+
+  <p>Fudge is BudgeFudge's AI assistant powered by <strong>Apple's FoundationModels framework</strong> (Apple Intelligence). All natural language processing, transaction extraction, and financial analysis run locally on your device using Apple's on-device language model.</p>
+
+  <p>When you share a screenshot or message into BudgeFudge for transaction import, the image or text is:</p>
+  <ol>
+    <li>Read locally by Apple's Vision framework (on-device OCR)</li>
+    <li>Processed by FoundationModels (on-device language model)</li>
+    <li>Stored in the local SQLite database if you confirm the proposed entry</li>
+  </ol>
+
+  <p>At no point is your AI conversation history, imported content, or any inference result sent to our servers or to Apple's servers. This feature requires Apple Intelligence to be enabled on your device and is available on supported iPhone models running iOS 26 or later.</p>
+
+  <!-- ─── 4. Notifications ──────────────────────────────────────────────────── -->
+
+  <h2>4. Notifications</h2>
+
+  <p>BudgeFudge uses <strong>local push notifications only</strong>. The evening nudge reminder and upcoming-due alerts are scheduled entirely on your device using iOS's local notification APIs. No notification content is transmitted to our servers or any push notification service. Notification permission is optional — the app works fully without it.</p>
+
+  <!-- ─── 5. Legal basis (GDPR) ─────────────────────────────────────────────── -->
+
+  <h2>5. Legal Basis for Processing (GDPR — EU / EEA / UK)</h2>
+
+  <p>If you are located in the European Union, European Economic Area, or United Kingdom, we process your personal data under the following legal bases:</p>
+
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>Legal basis</th>
+    </tr>
+    <tr>
+      <td>Email address and user ID (account)</td>
+      <td><strong>Contract</strong> — necessary to provide the cloud backup service you requested by creating an account (GDPR Article 6(1)(b)).</td>
+    </tr>
+    <tr>
+      <td>Budgeting data in cloud backup</td>
+      <td><strong>Contract</strong> — necessary to deliver the backup and restore functionality you signed up for (GDPR Article 6(1)(b)).</td>
+    </tr>
+    <tr>
+      <td>Purchase receipt data (via RevenueCat)</td>
+      <td><strong>Contract</strong> — necessary to verify your purchase and grant you access to paid features (GDPR Article 6(1)(b)).</td>
+    </tr>
+  </table>
+
+  <p>We do not process personal data based on consent or legitimate interests for the purposes described in this policy. We do not engage in automated decision-making or profiling.</p>
+
+  <!-- ─── 6. International transfers ──────────────────────────────────────────── -->
+
+  <h2>6. International Data Transfers</h2>
+
+  <p>If you create an account, your data is stored on Supabase's infrastructure. Supabase offers data residency options. Depending on your Supabase project region, your data may be stored and processed outside your country of residence, including in the United States.</p>
+
+  <p>For transfers of personal data from the EU/EEA/UK to the United States or other third countries, Supabase relies on Standard Contractual Clauses (SCCs) approved by the European Commission. Details are available in Supabase's privacy policy and Data Processing Agreement.</p>
+
+  <p>If you are an EU/EEA/UK user and wish to understand where your data is stored, please contact us via our <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">contact form</a>.</p>
+
+  <!-- ─── 7. How we use your data ──────────────────────────────────────────── -->
+
+  <h2>7. How We Use Your Data</h2>
+
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>How it is used</th>
+      <th>Used for advertising?</th>
+    </tr>
+    <tr>
+      <td>Email address</td>
+      <td>Account authentication (sign-in, password reset)</td>
+      <td><span class="badge badge-green">No</span></td>
+    </tr>
+    <tr>
+      <td>User ID</td>
+      <td>Linking your budgeting records to your account in the cloud database</td>
+      <td><span class="badge badge-green">No</span></td>
+    </tr>
+    <tr>
+      <td>Budgeting data</td>
+      <td>Displaying your financial picture within the app; cloud backup and restore</td>
+      <td><span class="badge badge-green">No</span></td>
+    </tr>
+    <tr>
+      <td>Purchase receipt</td>
+      <td>Verifying your purchase and unlocking paid features</td>
+      <td><span class="badge badge-green">No</span></td>
+    </tr>
+  </table>
+
+  <p>We do not use your data for advertising, behavioural profiling, product recommendations to third parties, or any purpose other than operating the app for you.</p>
+
+  <!-- ─── 8. Who we share data with ────────────────────────────────────────────── -->
+
+  <h2>8. Who We Share Your Data With</h2>
+
+  <p>We share personal data only with the following service providers, who act as data processors on our behalf:</p>
+
+  <table>
+    <tr>
+      <th>Provider</th>
+      <th>Role</th>
+      <th>Data shared</th>
+      <th>Privacy policy</th>
+    </tr>
+    <tr>
+      <td><strong>Supabase</strong></td>
+      <td>Cloud database and authentication</td>
+      <td>Email, user ID, budgeting data</td>
+      <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td><strong>RevenueCat</strong></td>
+      <td>In-app purchase verification</td>
+      <td>Anonymous user ID, purchase receipt</td>
+      <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td><strong>Apple Inc.</strong></td>
+      <td>App distribution, payment processing, on-device AI</td>
+      <td>Standard app store data; billing handled entirely by Apple</td>
+      <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td>
+    </tr>
+  </table>
+
+  <p><strong>We do not sell, rent, or share your data with any advertising network, data broker, or other third party.</strong></p>
+
+  <p>We may disclose your data if required by applicable law, court order, or government authority, or to protect the rights, property, or safety of BudgeFudge, its users, or the public.</p>
+
+  <!-- ─── 9. Data retention ─────────────────────────────────────────────────── -->
+
+  <h2>9. Data Retention and Deletion</h2>
+
+  <h3>Local data</h3>
+  <p>All data stored on your device remains until you delete the BudgeFudge app. Deleting the app removes the local database.</p>
+
+  <h3>Cloud data</h3>
+  <p>If you have an account, your cloud data is retained for as long as your account exists. You may request deletion at any time:</p>
+
+  <ol>
+    <li>Open BudgeFudge → <strong>Settings → Sign Out</strong> (this disconnects your device but does not delete cloud data).</li>
+    <li>To permanently delete your account and all associated cloud data, submit a request via our <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">contact form</a>. We will delete your data from Supabase within <strong>30 days</strong> and confirm by email.</li>
+  </ol>
+
+  <p>We plan to add an in-app account deletion flow in a future update.</p>
+
+  <h3>Purchase data</h3>
+  <p>RevenueCat retains purchase receipt data in accordance with their own retention policy (see <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>). Apple retains billing records per their standard policies.</p>
+
+  <!-- ─── 10. Your rights ───────────────────────────────────────────────────── -->
+
+  <h2>10. Your Rights</h2>
+
+  <div class="rights-region">
+    <h3>European Union, EEA, and United Kingdom (GDPR / UK GDPR)</h3>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal data we hold about you.</li>
+      <li><strong>Rectification</strong> — request correction of inaccurate or incomplete data.</li>
+      <li><strong>Erasure ("right to be forgotten")</strong> — request deletion of your personal data.</li>
+      <li><strong>Restriction of processing</strong> — request that we restrict how we process your data.</li>
+      <li><strong>Data portability</strong> — receive your data in a structured, machine-readable format.</li>
+      <li><strong>Object</strong> — object to processing based on legitimate interests.</li>
+      <li><strong>Lodge a complaint</strong> — you have the right to lodge a complaint with your national data protection authority (e.g., the ICO in the UK, or the relevant supervisory authority in your EU member state).</li>
+    </ul>
+  </div>
+
+  <div class="rights-region">
+    <h3>California (CCPA / CPRA)</h3>
+    <p>California residents have the right to:</p>
+    <ul>
+      <li><strong>Know</strong> what personal information we collect, use, disclose, and sell.</li>
+      <li><strong>Delete</strong> personal information we have collected from you, subject to certain exceptions.</li>
+      <li><strong>Opt out of the sale or sharing</strong> of personal information — <em>we do not sell or share personal information</em>.</li>
+      <li><strong>Non-discrimination</strong> — we will not discriminate against you for exercising your CCPA rights.</li>
+      <li><strong>Correct</strong> inaccurate personal information.</li>
+      <li><strong>Limit use of sensitive personal information</strong> — we do not use sensitive personal information beyond the purposes permitted under the CPRA.</li>
+    </ul>
+    <p>To submit a request, use our <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">contact form</a>. We will respond within 45 days.</p>
+  </div>
+
+  <div class="rights-region">
+    <h3>Brazil (LGPD)</h3>
+    <p>Under Brazil's Lei Geral de Proteção de Dados (LGPD), you have rights equivalent to those listed above, including access, correction, anonymisation, portability, deletion, and information about sharing. Use our <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">contact form</a> to exercise your rights.</p>
+  </div>
+
+  <div class="rights-region">
+    <h3>Australia (Privacy Act 1988)</h3>
+    <p>Australian users may request access to or correction of their personal information held by us. If you are not satisfied with our handling of your request, you may contact the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
+  </div>
+
+  <div class="rights-region">
+    <h3>All other regions</h3>
+    <p>Regardless of where you are located, you can contact us at any time to access, correct, export, or delete your personal data. We will respond within 30 days.</p>
+  </div>
+
+  <!-- ─── 11. Children ─────────────────────────────────────────────────────── -->
+
+  <h2>11. Children's Privacy</h2>
+
+  <p>BudgeFudge is not directed at children under the age of 13 (or 16 in the EU/EEA). We do not knowingly collect personal information from children under these ages. If you believe a child has provided us with personal information, please contact us immediately via our <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">contact form</a> and we will delete it promptly.</p>
+
+  <p>The App Store rating for BudgeFudge is 4+ and the app is not marketed to children.</p>
+
+  <!-- ─── 12. Security ──────────────────────────────────────────────────────── -->
+
+  <h2>12. Security</h2>
+
+  <p>We take reasonable measures to protect your data:</p>
+  <ul>
+    <li>Local data is stored in a SQLite database protected by iOS data protection (encrypted at rest when the device is locked).</li>
+    <li>Cloud data is stored in Supabase, which uses row-level security to ensure only authenticated users can access their own records. All connections use TLS.</li>
+    <li>We do not store passwords — authentication is handled by Supabase Auth.</li>
+  </ul>
+
+  <p>No method of electronic storage or transmission is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.</p>
+
+  <!-- ─── 13. Third-party links ─────────────────────────────────────────────── -->
+
+  <h2>13. Third-Party Links and Services</h2>
+
+  <p>BudgeFudge does not contain links to third-party websites. The privacy policy link in Settings points to this document. Apple's App Store, Supabase, and RevenueCat each operate under their own privacy policies, which we have linked above. We are not responsible for the privacy practices of those third parties.</p>
+
+  <!-- ─── 14. Changes ───────────────────────────────────────────────────────── -->
+
+  <h2>14. Changes to This Policy</h2>
+
+  <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page and, where required by law, notify affected users. We encourage you to review this policy periodically. Continued use of the app after changes become effective constitutes acceptance of the revised policy.</p>
+
+  <!-- ─── 15. Contact ───────────────────────────────────────────────────────── -->
+
+  <h2>15. Contact Us</h2>
+
+  <p>For any questions, requests, or complaints about this privacy policy or your data:</p>
+
+  <table>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td>Nathaniel Degorio</td>
+    </tr>
+    <tr>
+      <td><strong>Contact</strong></td>
+      <td><a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">Contact form</a></td>
+    </tr>
+    <tr>
+      <td><strong>Response time</strong></td>
+      <td>Within 30 days (45 days for California CCPA requests)</td>
+    </tr>
+  </table>
+
+  <p>If you are in the EU/EEA and are not satisfied with our response, you have the right to lodge a complaint with your local data protection authority.</p>
+
+</main>
+
+<footer>
+  <p>© 2026 Nathaniel Degorio · BudgeFudge · <a href="https://form.typeform.com/to/tzSmtozU" target="_blank" rel="noopener">Contact</a></p>
+  <p style="margin-top: 6px;">BudgeFudge is an independent app. It is not affiliated with or endorsed by Apple Inc.</p>
+</footer>
 
 </body>
 </html>
